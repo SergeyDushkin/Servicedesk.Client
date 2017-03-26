@@ -11,21 +11,27 @@ import { routes } from './app.routes';
 import { AppHeaderComponent } from './widgets/app-header/app-header.component';
 import { MenuAsideComponent } from './widgets/menu-aside/menu-aside.component';
 import { UserBoxComponent } from './widgets/user-box/user-box.component';
-import { TabBadgeComponent } from './widgets/tab-badge';
+//import { TabBadgeComponent } from './widgets/tab-badge';
 
 let widgets = [
   AppHeaderComponent,
   MenuAsideComponent,
   UserBoxComponent,
-  TabBadgeComponent,
+  //TabBadgeComponent,
 ];
-
 
 // Components
 import { HomePage } from './pages/home';
 
 let pages = [
   HomePage
+];
+
+// External Modules
+import { ServiceDeskModule } from './service-desk';
+
+let modules = [
+  ServiceDeskModule
 ];
 
 @NgModule({
@@ -38,7 +44,7 @@ let pages = [
     BrowserModule,
     FormsModule,
     HttpModule,
-
+    modules,
     RouterModule.forRoot(routes)
   ],
   providers: [],

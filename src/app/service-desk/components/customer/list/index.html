@@ -1,0 +1,37 @@
+<div class="box">
+  
+  <div class="box-body no-padding">
+    <table class="table table-striped">
+      <tr>
+        <th>Наименование</th>
+      </tr>
+      <tr (click)="selectRow(item)" *ngFor="let item of data; trackBy: trackById">
+        <td>{{item.name}}</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <!-- /.box-body -->
+  
+  <div *ngIf="data" class="box-footer clearfix">
+    Записей: {{data.length}} из {{count}} 
+    
+    <!--
+    <ul class="pagination pagination-sm no-margin pull-right">
+        <li [ngClass]="{disabled:pager.currentPage === 1}"><a (click)="setPage(pager.currentPage - 1)">&laquo;</a></li>
+        <li [ngClass]="{active:pager.currentPage === page}" *ngFor="let page of pager.pages"><a (click)="setPage(page)">{{page}}</a></li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}"><a (click)="setPage(pager.currentPage + 1)">&raquo;</a></li>
+    </ul>
+    -->
+  </div>
+  
+  <div *ngIf="!data" class="box-footer clearfix">
+    Записи не найдены
+  </div>
+  <!-- /.box-footer -->
+
+  <div *ngIf="isLoading" class="overlay">
+      <i class="fa fa-refresh fa-spin"></i>
+  </div>
+</div>
+<!-- /.box -->

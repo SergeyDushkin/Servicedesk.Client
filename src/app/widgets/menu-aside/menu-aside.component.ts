@@ -12,9 +12,9 @@ export class MenuAsideComponent implements OnInit {
   private current_url: string;
   links: Array<any> = [
     {
-      "title": "Список КНИПИ",
+      "title": "Клиенты",
       "icon": "folder",
-      "link": ['/knipi'],
+      "link": ['/sd/customers'],
       "access": () => true
     },
     {

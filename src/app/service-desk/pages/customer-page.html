@@ -1,0 +1,65 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Клиенты
+    <small></small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li [class.active]="activeTab==mainTab"><a href="javascript:void(0)" (click)="activeTab=mainTab">Клиенты <tab-badge [(value)]="customer_length"></tab-badge></a></li>
+            <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of links;"><a href="javascript:void(0)" (click)="activeTab=item.id">{{item.name}}</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane" [class.active]="activeTab==mainTab">
+                <div class="box-header">
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refreshCustomerList.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCustomerCreate()"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                </div>
+                <app-customer-list
+                    [(onRefresh)]="refreshCustomerList" 
+                    [(count)]="customer_length"
+                    (onSelect)="handleCustomerSelected($event)"></app-customer-list>
+            </div>
+            
+            <div *ngFor="let item of links;" class="tab-pane" [class.active]="activeTab==item.id">
+                <div [ngSwitch]="item.type">
+                    
+                    <app-customer-detail [(id)]="item.id" 
+                        (onLoaded)="handleCustomerLoaded($event)" 
+                        (onCanceled)="handleCustomerCanceled($event, item)" 
+                        (onUpdated)="handleCustomerUpdated($event, item)" 
+                        (onDeleted)="handleCustomerDeleted($event, item)"
+                        *ngSwitchCase="'app-customer-detail'"></app-customer-detail>
+
+                    <app-customer-create
+                        (onCanceled)="handleCustomerCanceled($event, item)" 
+                        (onUpdated)="handleCustomerUpdated($event, item)"
+                        *ngSwitchCase="'app-customer-create'"></app-customer-create>
+                </div>
+            </div>
+            
+            <div *ngFor="let item of refLinks;" class="tab-pane" [class.active]="activeTab==item.id">
+                <div [ngSwitch]="item.type">
+                    
+                    <app-customer-detail [(id)]="item.id" 
+                        (onLoaded)="handleCustomerLoaded($event)" 
+                        (onCanceled)="handleCustomerCanceled($event, item)" 
+                        (onUpdated)="handleCustomerUpdated($event, item)" 
+                        (onDeleted)="handleCustomerDeleted($event, item)"
+                        *ngSwitchCase="'app-customer-detail'"></app-customer-detail>
+
+                    <app-customer-create
+                        (onCanceled)="handleCustomerCanceled($event, item)" 
+                        (onUpdated)="handleCustomerUpdated($event, item)"
+                        *ngSwitchCase="'app-customer-create'"></app-customer-create>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><!-- /.content -->
