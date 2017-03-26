@@ -10,8 +10,9 @@
 <section class="content">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li [class.active]="activeTab==mainTab"><a href="javascript:void(0)" (click)="activeTab=mainTab">Клиенты <tab-badge [(value)]="customer_length"></tab-badge></a></li>
-            <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of links;"><a href="javascript:void(0)" (click)="activeTab=item.id">{{item.name}}</a></li>
+            <li [class.active]="activeTab==mainTab"><a (click)="activeTab=mainTab">Клиенты <tab-badge [(value)]="customer_length"></tab-badge></a></li>
+            <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of links;"><a (click)="setActiveLink(item)">{{item.name}}</a></li>
+            <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of getRefLinks(activeLink);"><a (click)="activeTab=item.id">{{item.name}}</a></li>
         </ul>
         <div class="tab-content">
 
@@ -43,20 +44,27 @@
                 </div>
             </div>
             
-            <div *ngFor="let item of refLinks;" class="tab-pane" [class.active]="activeTab==item.id">
+            <div *ngFor="let item of getRefLinks(activeLink);" class="tab-pane" [class.active]="activeTab==item.id">
                 <div [ngSwitch]="item.type">
+
+                    <app-address-list [(referenceId)]="item.referenceId" 
+                        [(onRefresh)]="refreshAddressList" 
+                        [(count)]="address_length"
+                        (onSelect)="handleAddressSelected($event)"
+                        *ngSwitchCase="'app-address-list'"></app-address-list>
                     
-                    <app-customer-detail [(id)]="item.id" 
+                    <app-address-detail [(id)]="item.id" 
                         (onLoaded)="handleCustomerLoaded($event)" 
                         (onCanceled)="handleCustomerCanceled($event, item)" 
                         (onUpdated)="handleCustomerUpdated($event, item)" 
                         (onDeleted)="handleCustomerDeleted($event, item)"
-                        *ngSwitchCase="'app-customer-detail'"></app-customer-detail>
+                        *ngSwitchCase="'app-address-detail'"></app-address-detail>
 
-                    <app-customer-create
+                    <app-address-create
                         (onCanceled)="handleCustomerCanceled($event, item)" 
                         (onUpdated)="handleCustomerUpdated($event, item)"
-                        *ngSwitchCase="'app-customer-create'"></app-customer-create>
+                        *ngSwitchCase="'app-address-create'"></app-address-create>
+
                 </div>
             </div>
 

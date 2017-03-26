@@ -13,10 +13,10 @@ export class MenuAsideComponent implements OnInit {
   links: Array<any> = [
     {
       "title": "Клиенты",
-      "icon": "folder",
+      "icon": "users",
       "link": ['/sd/customers'],
       "access": () => true
-    },
+    },/*
     {
       "title": "Суточные отчеты",
       "icon": "table",
@@ -41,7 +41,7 @@ export class MenuAsideComponent implements OnInit {
       "link": ['/users'],
       "access": () => true
 //      "access": () => this.current_user.hasClaim('feature:user:view')
-     }
+     }*/
   ];
 
 //  constructor(

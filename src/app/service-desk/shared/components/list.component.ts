@@ -66,7 +66,10 @@ export class BaseListComponent<T extends IIdentifiable, TService extends IDataSe
 
   ngOnInit() {
     this.refresh().then(() => this.isInitialized = true);
-    this.onRefresh.subscribe(() => this.refresh());
+
+    if (this.onRefresh) {
+      this.onRefresh.subscribe(() => this.refresh());
+    }
   }
   
   trackById(index, item) {

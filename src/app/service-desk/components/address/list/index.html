@@ -4,9 +4,11 @@
     <table class="table table-striped">
       <tr>
         <th>Наименование</th>
+        <th>Адрес</th>
       </tr>
       <tr (click)="selectRow(item)" *ngFor="let item of data; trackBy: trackById">
         <td>{{item.name}}</td>
+        <td>{{item.address}}</td>
       </tr>
     </table>
   </div>

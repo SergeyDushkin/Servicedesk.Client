@@ -1,0 +1,25 @@
+<!-- form start -->
+<form role="form">
+    <div class="box-body">
+        <div class="form-group">
+            <label for="lastName">Фамилия</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="data.lastName">
+        </div>
+        <div class="form-group">
+            <label for="firstName">Имя</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="data.firstName">
+        </div>
+        <div class="form-group">
+            <label for="middleName">Отчество</label>
+            <input type="text" class="form-control" name="middleName" [(ngModel)]="data.middleName">
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button type="button" class="btn btn-default btn-icon-cancel btn-sm btn-flat" (click)="onClickBack()">Отменить и закрыть</button>
+        <button type="button" class="btn btn-info btn-icon-save btn-sm btn-flat" (click)="onUpdate()">Сохранить</button>
+    </div>
+    <!-- /.box-footer -->
+</form>
+<!-- /.form -->

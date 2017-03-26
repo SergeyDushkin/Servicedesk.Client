@@ -7,10 +7,22 @@ import { ServiceDeskRoutingModule } from './routes';
 import { TabBadgeComponent } from '../widgets/tab-badge';
 
 import { CustomerCreateComponent, CustomerDetailComponent, CustomerListComponent, CustomerSelectComponent, CustomerService } from './components/customer'
+import { AddressCreateComponent, AddressDetailComponent, AddressListComponent, AddressSelectComponent, AddressService } from './components/address'
+import { ContractCreateComponent, ContractDetailComponent, ContractListComponent, ContractSelectComponent, ContractService } from './components/contract'
+import { ServiceCreateComponent, ServiceDetailComponent, ServiceListComponent, ServiceSelectComponent, ServiceService } from './components/service'
+import { SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, SupplierService } from './components/supplier'
+import { UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, UnitService } from './components/unit'
+import { UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, UserService } from './components/user'
 
 let components = [
     TabBadgeComponent,
     CustomerCreateComponent, CustomerDetailComponent, CustomerListComponent, CustomerSelectComponent, 
+    AddressCreateComponent, AddressDetailComponent, AddressListComponent, AddressSelectComponent, 
+    ContractCreateComponent, ContractDetailComponent, ContractListComponent, ContractSelectComponent,
+    ServiceCreateComponent, ServiceDetailComponent, ServiceListComponent, ServiceSelectComponent, 
+    SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, 
+    UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, 
+    UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, 
 ];
 
 import { CustomerPage } from './pages/customer-page'
@@ -25,6 +37,8 @@ import { ApiService } from './shared/services/api.service';
 let services = [
   ApiService, 
   CustomerService,
+  AddressService,
+  ContractService, ServiceService, SupplierService, UnitService, UserService
 ];
 
 @NgModule({

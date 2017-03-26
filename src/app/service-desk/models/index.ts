@@ -14,3 +14,109 @@ export class Customer implements IIdentifiable, IDependently {
         this.name = data.name || "";
     }
 }
+
+export class Unit implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public name : string;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+    }
+}
+
+export class Supplier implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public name : string;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+    }
+}
+
+export class Service implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public name : string;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+    }
+}
+
+export class Address implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public name : string;
+    public address : string;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+        this.address = data.address || "";
+    }
+}
+
+export class User implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public firstName : string;
+    public middleName : string;
+    public lastName : string;
+    public genderCode : string;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.firstName = data.firstName || "";
+        this.middleName = data.middleName || "";
+        this.lastName = data.lastName || "";
+        this.genderCode = data.genderCode || "";
+    }
+}
+
+export class Contract implements IIdentifiable, IDependently {
+
+    public resource : string;
+    public referenceId : string;
+    public id : string;
+    public name : string;
+    public number : string;
+    public date : Date;
+    public startDate : Date;
+    public endDate : Date;
+
+    public constructor(data:any = {}) {
+        this.resource = data.resource || undefined;
+        this.referenceId = data.referenceId || undefined;
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+        this.number = data.number || "";
+        this.date = new Date(data.date) || undefined;
+        this.startDate = new Date(data.startDate) || undefined;
+        this.endDate = new Date(data.endDate) || undefined;
+    }
+}

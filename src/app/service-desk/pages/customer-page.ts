@@ -12,9 +12,18 @@ export class CustomerPage implements OnInit {
   public mainTab = 'mainTab';
 
   links : any[] = new Array<any>();
-  refLinks : any[] = new Array<any>();
+  activeLink: any;
   _activeTab: string = "mainTab";
   _prevTab: string = "mainTab";
+
+  setActiveLink(link) {
+    this.activeTab = link.id;
+    this.activeLink = link;
+  }
+
+  getRefLinks(link) {
+    return link ? link.refLinks || [] : [];
+  }
 
   set activeTab(val) {
     this._prevTab = this._activeTab;
@@ -57,7 +66,13 @@ export class CustomerPage implements OnInit {
   handleCustomerSelected(data) {
     console.log('handleCustomerSelected ' + data);
 
-    this.createTab({ id: data.id, name: 'Клиент ' + data['name'], type: 'app-customer-detail' });
+    this.createTab({ 
+      id: data.id, 
+      name: 'Клиент ' + data['name'], 
+      type: 'app-customer-detail', 
+      refLinks: [
+        { id: 'app-address-list', referenceId: data.id, name: 'Адреса', type: 'app-address-list' }] 
+      });
   }
 
   onCustomerCreate() {
@@ -82,13 +97,7 @@ export class CustomerPage implements OnInit {
       this.links.push(link);
     }
 
-    this.activeTab = link.id;
-  }
-
-  createRefTab(link) {
-    if (!this.refLinks.find(r => r.id == link.id)) {
-      this.refLinks.push(link);
-    }
+    this.setActiveLink(link);
   }
 
 }
