@@ -1,0 +1,26 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <li class="header">Меню</li>
+
+      <ng-template ngFor let-item [ngForOf]="links" >
+        <ng-template [ngIf]="!item.sublinks && item.access()">
+          <li [class.active]="item.link[0] === current_url">
+            <a [routerLink]="item.link">
+              <i class="fa fa-{{item.icon}}"></i>
+              <span>{{item.title}}</span>
+            </a>
+          </li>
+        </ng-template>
+      </ng-template>
+      <!-- Optionally, you can add icons to the links -->
+
+    </ul><!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>
