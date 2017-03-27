@@ -33,6 +33,7 @@ import { UnitPage } from './pages/unit-page'
 import { ContractPage } from './pages/contract-page'
 import { ServicePage } from './pages/service-page'
 import { ServicesPage } from './pages/services-page'
+import { CompanyPage } from './pages/company-page'
 
 let pages = [
   CustomerPage, CustomersPage,
@@ -40,7 +41,8 @@ let pages = [
   UserPage,
   UnitPage,
   ContractPage,
-  ServicePage, ServicesPage
+  ServicePage, ServicesPage,
+  CompanyPage
 ];
 
 

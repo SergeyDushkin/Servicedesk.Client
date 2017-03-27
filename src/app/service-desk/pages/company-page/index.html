@@ -1,0 +1,56 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Моя компания
+    <small></small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li [class.active]="activeTab==item" *ngFor="let item of tabs;"><a (click)="setActiveLink(item)">{{item.title}}<tab-badge [(value)]="item.count"></tab-badge></a></li>
+        </ul>
+        <div class="tab-content">
+            
+            <div *ngFor="let item of tabs;" class="tab-pane" [class.active]="activeTab==item">
+                <div [ngSwitch]="item.type">
+                    
+                    <div *ngSwitchCase="'app-unit-list'">
+                        <div class="box-header">
+                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-create', 'Новое подразделение')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                        </div>
+                        <app-unit-list
+                            [(onRefresh)]="item.refresh" 
+                            [(count)]="item.count"
+                            (onSelect)="handleUnitSelected($event)"></app-unit-list>
+                    </div>
+                    
+                    <div *ngSwitchCase="'app-user-list'">
+                        <div class="box-header">
+                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-user-create', 'Новый сотрудник')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                        </div>
+                        <app-user-list
+                            [(onRefresh)]="item.refresh" 
+                            [(count)]="item.count"
+                            (onSelect)="handleUserSelected($event)"></app-user-list>
+                    </div>
+
+                    <app-unit-create
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)"
+                        *ngSwitchCase="'app-unit-create'"></app-unit-create>
+
+                    <app-user-create
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)"
+                        *ngSwitchCase="'app-user-create'"></app-user-create>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><!-- /.content -->

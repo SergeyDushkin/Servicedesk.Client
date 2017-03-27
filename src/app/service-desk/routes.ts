@@ -10,10 +10,12 @@ import { AddressPage } from './pages/address-page';
 import { UserPage } from './pages/user-page';
 import { UnitPage } from './pages/unit-page';
 import { ContractPage } from './pages/contract-page';
-import { ServicePage } from './pages/service-page'
-import { ServicesPage } from './pages/services-page'
+import { ServicePage } from './pages/service-page';
+import { ServicesPage } from './pages/services-page';
+import { CompanyPage } from './pages/company-page';
 
 const routes: Routes = [
+  { path: 'sd/company', component: CompanyPage },
   { path: 'sd/customers', component: CustomersPage },
   { path: 'sd/customers/:id', component: CustomerPage },
   { path: 'sd/address/:id', component: AddressPage },

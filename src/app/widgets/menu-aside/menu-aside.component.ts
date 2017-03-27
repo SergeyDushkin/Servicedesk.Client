@@ -12,8 +12,14 @@ export class MenuAsideComponent implements OnInit {
   private current_url: string;
   links: Array<any> = [
     {
-      "title": "Клиенты",
+      "title": "Моя компания",
       "icon": "users",
+      "link": ['/sd/company'],
+      "access": () => true
+    },
+    {
+      "title": "Клиенты",
+      "icon": "child",
       "link": ['/sd/customers'],
       "access": () => true
     },

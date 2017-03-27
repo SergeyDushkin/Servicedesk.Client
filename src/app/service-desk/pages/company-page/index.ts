@@ -6,13 +6,14 @@ import { Subject } from 'rxjs';
 import { BaseTabPage } from '../../shared/pages/base-tab-page';
 
 @Component({
-  selector: 'app-services-page',
+  selector: 'app-company-page',
   templateUrl: 'index.html'
 })
-export class ServicesPage extends BaseTabPage implements OnInit {
+export class CompanyPage extends BaseTabPage implements OnInit {
 
   tabs = [
-    { id: 0, type: 'app-service-list', refresh: new Subject<void>(), count: 0, title: 'Главная' },
+    { id: 0, type: 'app-user-list', refresh: new Subject<void>(), count: 0, title: 'Сотрудники' },
+    { id: 1, type: 'app-unit-list', refresh: new Subject<void>(), count: 0, title: 'Орг. структура' },
   ];
 
   constructor(private route: ActivatedRoute, private location: Location, private router: Router) { 
@@ -20,10 +21,7 @@ export class ServicesPage extends BaseTabPage implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(data => {
-      this.id = data['id'];
-      this.init();
-    });
+    this.init();
   }
 
   handleServiceSelected(data) {
