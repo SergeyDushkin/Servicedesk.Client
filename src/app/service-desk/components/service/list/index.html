@@ -3,9 +3,11 @@
   <div class="box-body no-padding">
     <table class="table table-striped">
       <tr>
+        <th>Код</th>
         <th>Наименование</th>
       </tr>
       <tr (click)="selectRow(item)" *ngFor="let item of data; trackBy: trackById">
+        <td>{{item.code}}</td>
         <td>{{item.name}}</td>
       </tr>
     </table>

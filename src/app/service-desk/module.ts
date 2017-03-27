@@ -31,14 +31,16 @@ import { AddressPage } from './pages/address-page'
 import { UserPage } from './pages/user-page'
 import { UnitPage } from './pages/unit-page'
 import { ContractPage } from './pages/contract-page'
+import { ServicePage } from './pages/service-page'
+import { ServicesPage } from './pages/services-page'
 
 let pages = [
-  CustomerPage,
-  CustomersPage,
+  CustomerPage, CustomersPage,
   AddressPage,
   UserPage,
   UnitPage,
   ContractPage,
+  ServicePage, ServicesPage
 ];
 
 

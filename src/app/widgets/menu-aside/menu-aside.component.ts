@@ -16,6 +16,12 @@ export class MenuAsideComponent implements OnInit {
       "icon": "users",
       "link": ['/sd/customers'],
       "access": () => true
+    },
+    {
+      "title": "Услуги",
+      "icon": "cube",
+      "link": ['/sd/services'],
+      "access": () => true
     },/*
     {
       "title": "Суточные отчеты",

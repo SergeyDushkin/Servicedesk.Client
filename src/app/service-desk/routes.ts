@@ -10,6 +10,8 @@ import { AddressPage } from './pages/address-page';
 import { UserPage } from './pages/user-page';
 import { UnitPage } from './pages/unit-page';
 import { ContractPage } from './pages/contract-page';
+import { ServicePage } from './pages/service-page'
+import { ServicesPage } from './pages/services-page'
 
 const routes: Routes = [
   { path: 'sd/customers', component: CustomersPage },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'sd/users/:id', component: UserPage },
   { path: 'sd/units/:id', component: UnitPage },
   { path: 'sd/contracts/:id', component: ContractPage },
+  { path: 'sd/services', component: ServicesPage },
+  { path: 'sd/services/:id', component: ServicePage },
 ];
 
 @NgModule({
