@@ -32,6 +32,11 @@ export class ServicesPage implements OnInit {
     });
   }
 
+  handleServiceSelected(data) {
+    console.log('handleServiceSelected ' + data);
+    this.router.navigate([data.id], { relativeTo: this.route });
+  }
+
   handleLoaded(data) {
     console.log('handleLoaded ' + data);
   }
