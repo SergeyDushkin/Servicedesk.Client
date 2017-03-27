@@ -103,6 +103,7 @@ export class Contract implements IIdentifiable, IDependently {
     public resource : string;
     public referenceId : string;
     public id : string;
+    public clientId : string;
     public name : string;
     public number : string;
     public date : Date;
@@ -113,6 +114,7 @@ export class Contract implements IIdentifiable, IDependently {
         this.resource = data.resource || undefined;
         this.referenceId = data.referenceId || undefined;
         this.id = data.id || undefined;
+        this.clientId = data.clientId || undefined;
         this.name = data.name || "";
         this.number = data.number || "";
         this.date = new Date(data.date) || undefined;

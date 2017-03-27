@@ -14,7 +14,7 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
 
   private urlBuilder : UrlBuilder;
 
-  constructor(private api : ApiService, url : string) { 
+  constructor(private ctor: ParameterlessConstructor<T>, private api : ApiService, url : string) { 
     this.urlBuilder = new UrlBuilder(url);
   }
 
@@ -22,7 +22,7 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
     this.api.get(this.urlBuilder.create(options.reference).addParams(options.params).toString())
       .map(r => {
         let count = r.headers.get('X-Total-Count');
-        let data = r.json().map(i => this.extractData(i));
+        let data = r.json().map(i => this.extractData(this.ctor, i));
 
         return new PageResult(data, Number.parseInt(count));
       });
@@ -30,7 +30,7 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
   getById = (options: IApiClientRequestOptions) : Observable<T> =>
     this.api.get(this.urlBuilder.create(options.reference).addIdentity(options.id).toString())
       .map(r => r.json())
-      .map(item => this.extractData(item));
+      .map(item => this.extractData(this.ctor, item));
 
   create = (create : T, options: IApiClientRequestOptions = {}) : Observable<Response> =>
     this.api.post(this.urlBuilder.create(options.reference).toString(), create);
@@ -41,12 +41,18 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
   delete = (options: IApiClientRequestOptions) : Observable<Response> =>
     this.api.delete(this.urlBuilder.create(options.reference).addIdentity(options.id).toString());
 
-  extractData = (item : any) : T => item as T;
+  //extractData = (item : any) : T => item as T;
+  extractData = (ctor: ParameterlessConstructor<T>, item : any) : T => new ctor(item);
 }
 
 interface ParameterlessConstructor<T> {
     new(): T;
 }
+
+interface ParameterlessConstructor<T> {
+    new(params): T;
+}
+
 
 class Factory<T> {
     constructor(private ctor: ParameterlessConstructor<T>) {

@@ -13,7 +13,7 @@ import { BaseService } from '../../../shared/services/base.service';
 export class ContractService extends BaseService<Contract> {
 
   constructor(private apiService : ApiService) { 
-    super(apiService, 'contracts/');
+    super(Contract, apiService, 'contracts/');
   }
 
 }

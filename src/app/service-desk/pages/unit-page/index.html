@@ -1,0 +1,28 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Подразделение
+    <small></small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a>Главная</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane active">
+
+                <app-unit-detail [(id)]="id" 
+                    (onLoaded)="handleLoaded($event)" 
+                    (onCanceled)="handleCanceled($event, null)" 
+                    (onUpdated)="handleUpdated($event, null)" 
+                    (onDeleted)="handleDeleted($event, null)"></app-unit-detail>
+            </div>
+
+        </div>
+    </div>
+</section><!-- /.content -->

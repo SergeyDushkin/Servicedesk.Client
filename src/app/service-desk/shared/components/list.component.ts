@@ -93,6 +93,17 @@ export class BaseListComponent<T extends IIdentifiable, TService extends IDataSe
   }
 
   refresh() {
+    
+    if (this.referenceId) {
+      if (this.filter) {
+        if (!this.filter.referenceId) {
+          this.filter.referenceId = this.referenceId;
+        }
+      } else {
+        this.filter = { referenceId: this.referenceId };
+      }
+    }
+
     this.isLoading = true;
     return this.service.get({ reference: this.referenceId, params: this.filter }).toPromise()
       .then(r => {

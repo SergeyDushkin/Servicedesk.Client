@@ -40,6 +40,7 @@ export class DependentlyCreateComponent<T extends IIdentifiable & IDependently, 
   }
 
   onUpdate() {
+    this.data.referenceId = this.referenceId;
     this.service.create(this.data, { reference: this.referenceId }).toPromise()
       .then(r => this.onUpdated.emit(r))
       .then(r => this.service.constructor.name + ': record was created');

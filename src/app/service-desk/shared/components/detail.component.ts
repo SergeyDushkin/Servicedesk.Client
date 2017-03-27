@@ -77,4 +77,6 @@ export class BaseDetailComponent<T extends IIdentifiable, TService extends IData
   beforeSave = () : void => {};
   afterSave = () : void => {};
 
+  parseDate = (dateString: string): Date => dateString ? new Date(dateString) : null;
+
 }

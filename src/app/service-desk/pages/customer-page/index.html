@@ -1,0 +1,112 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Клиенты
+    <small></small>
+  </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li [class.active]="activeTab==customerDetailTab"><a (click)="activeTab=customerDetailTab">Главная</a></li>
+            <li [class.active]="activeTab==addressListTab"><a (click)="activeTab=addressListTab">Адреса<tab-badge [(value)]="count['app-address-list']"></tab-badge></a></li>
+            <li [class.active]="activeTab==userListTab"><a (click)="activeTab=userListTab">Сотрудники<tab-badge [(value)]="count['app-user-list']"></tab-badge></a></li>
+            <li [class.active]="activeTab==unitListTab"><a (click)="activeTab=unitListTab">Орг. структура<tab-badge [(value)]="count['app-unit-list']"></tab-badge></a></li>
+            <li [class.active]="activeTab==contractListTab"><a (click)="activeTab=contractListTab">Контракты<tab-badge [(value)]="count['app-contract-list']"></tab-badge></a></li>
+
+            <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of links;"><a (click)="setActiveLink(item)">{{item.name}}</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane" [class.active]="activeTab==customerDetailTab">
+
+                <app-customer-detail [(id)]="id" 
+                    (onLoaded)="handleCustomerLoaded($event)" 
+                    (onCanceled)="handleCustomerCanceled($event, null)" 
+                    (onUpdated)="handleCustomerUpdated($event, null)" 
+                    (onDeleted)="handleCustomerDeleted($event, null)"></app-customer-detail>
+            </div>
+
+            <div class="tab-pane" [class.active]="activeTab==addressListTab">
+
+                <div class="box-header">
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refresh['app-address-list'].next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-address-create', 'Новый адрес')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                </div>
+
+                <app-address-list [(referenceId)]="id" 
+                    [(onRefresh)]="refresh['app-address-list']" 
+                    [(count)]="count['app-address-list']"
+                    (onSelect)="handleAddressSelected($event)"></app-address-list>
+            </div>
+
+            <div class="tab-pane" [class.active]="activeTab==userListTab">
+                
+                <div class="box-header">
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refresh['app-user-list'].next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-user-create', 'Новый сотрудник')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                </div>
+
+                <app-user-list [(referenceId)]="id" 
+                    [(onRefresh)]="refresh['app-user-list']" 
+                    [(count)]="count['app-user-list']"
+                    (onSelect)="handleUserSelected($event)"></app-user-list>
+            </div>
+
+            <div class="tab-pane" [class.active]="activeTab==contractListTab">
+                
+                <div class="box-header">
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refresh['app-contract-list'].next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-contract-create', 'Новый контракт')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                </div>
+
+                <app-contract-list [(referenceId)]="id" 
+                    [(onRefresh)]="refresh['app-contract-list']" 
+                    [(count)]="count['app-contract-list']"
+                    (onSelect)="handleContractSelected($event)"></app-contract-list>
+            </div>
+
+            <div class="tab-pane" [class.active]="activeTab==unitListTab">
+
+                <div class="box-header">
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refresh['app-unit-list'].next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-create', 'Новое подразделение')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                </div>
+
+                <app-unit-list [(referenceId)]="id" 
+                    [(onRefresh)]="refresh['app-unit-list']" 
+                    [(count)]="count['app-unit-list']"
+                    (onSelect)="handleUnitSelected($event)"></app-unit-list>
+            </div>
+            
+            <div *ngFor="let item of links;" class="tab-pane" [class.active]="activeTab==item.id">
+                <div [ngSwitch]="item.type">
+                    
+                    <app-address-create [(referenceId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item, 'app-address-list')"
+                        *ngSwitchCase="'app-address-create'"></app-address-create>
+                    
+                    <app-user-create [(referenceId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item, 'app-user-list')"
+                        *ngSwitchCase="'app-user-create'"></app-user-create>
+                    
+                    <app-unit-create [(referenceId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item, 'app-unit-list')"
+                        *ngSwitchCase="'app-unit-create'"></app-unit-create>
+                    
+                    <app-contract-create [(referenceId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item, 'app-contract-list')"
+                        *ngSwitchCase="'app-contract-create'"></app-contract-create>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><!-- /.content -->

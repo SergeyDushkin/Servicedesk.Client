@@ -4,10 +4,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-customer-page',
-  templateUrl: 'customer-page.html'
+  selector: 'app-customers-page',
+  templateUrl: 'index.html'
 })
-export class CustomerPage implements OnInit {
+export class CustomersPage implements OnInit {
 
   public mainTab = 'mainTab';
 
@@ -66,6 +66,9 @@ export class CustomerPage implements OnInit {
   handleCustomerSelected(data) {
     console.log('handleCustomerSelected ' + data);
 
+    this.router.navigate([data.id], { relativeTo: this.route });
+
+  /*
     this.createTab({ 
       id: data.id, 
       name: 'Клиент ' + data['name'], 
@@ -73,6 +76,7 @@ export class CustomerPage implements OnInit {
       refLinks: [
         { id: 'app-address-list', referenceId: data.id, name: 'Адреса', type: 'app-address-list' }] 
       });
+      */
   }
 
   onCustomerCreate() {
