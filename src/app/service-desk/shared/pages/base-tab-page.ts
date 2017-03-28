@@ -32,6 +32,12 @@ export class BaseTabPage {
     //this.refresh[type].next();
   }
 
+  handleDeleted($event, link) {
+    console.log('handleDeleted ' + $event);
+    this.removeTab(link);
+    //this.refresh[type].next();
+  }
+
   onCreateTab(type, title) {
     this.createTab({ id: type, title: title, type: type });
   }

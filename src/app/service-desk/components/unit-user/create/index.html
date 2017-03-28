@@ -1,0 +1,17 @@
+<!-- form start -->
+<form role="form">
+    <div class="box-body">
+        <div class="form-group">
+            <label for="userId">Сотрудник</label>
+            <app-user-select [(value)]="data.userId" (change)="onUserChange($event.target.value)"></app-user-select>
+        </div>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button type="button" class="btn btn-default btn-icon-cancel btn-sm btn-flat" (click)="onClickBack()">Отменить и закрыть</button>
+        <button type="button" class="btn btn-info btn-icon-save btn-sm btn-flat" (click)="onUpdate()">Сохранить</button>
+    </div>
+    <!-- /.box-footer -->
+</form>
+<!-- /.form -->

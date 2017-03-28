@@ -53,7 +53,6 @@ export class BasicCreateComponent<T extends IIdentifiable, TService extends IDat
   @Output() onUpdated = new EventEmitter();
   
   private _data : T;
-  private _referenceId : string = undefined;
 
   get data() {
     return this._data;

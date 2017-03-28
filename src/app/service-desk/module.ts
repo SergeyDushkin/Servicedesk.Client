@@ -13,6 +13,7 @@ import { ServiceCreateComponent, ServiceDetailComponent, ServiceListComponent, S
 import { SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, SupplierService } from './components/supplier'
 import { UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, UnitService } from './components/unit'
 import { UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, UserService } from './components/user'
+import { UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, UnitUserService } from './components/unit-user'
 
 let components = [
     TabBadgeComponent,
@@ -23,6 +24,7 @@ let components = [
     SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, 
     UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, 
     UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, 
+    UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, 
 ];
 
 import { CustomerPage } from './pages/customer-page'
@@ -52,7 +54,8 @@ let services = [
   ApiService, 
   CustomerService,
   AddressService,
-  ContractService, ServiceService, SupplierService, UnitService, UserService
+  ContractService, ServiceService, SupplierService, UnitService, UserService,
+  UnitUserService,
 ];
 
 @NgModule({

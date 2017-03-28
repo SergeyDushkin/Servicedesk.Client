@@ -30,6 +30,19 @@ export class Unit implements IIdentifiable, IDependently {
     }
 }
 
+export class UnitUser implements IIdentifiable {
+
+    public id : string;
+    public unitId : string;
+    public userId : string;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.unitId = data.unitId || undefined;
+        this.userId = data.userId || undefined;
+    }
+}
+
 export class Supplier implements IIdentifiable, IDependently {
 
     public resource : string;
@@ -97,6 +110,10 @@ export class User implements IIdentifiable, IDependently {
         this.middleName = data.middleName || "";
         this.lastName = data.lastName || "";
         this.genderCode = data.genderCode || "";
+    }
+
+    public get name() {
+        return new String(this.lastName + ' ' + this.firstName + ' ' + this.middleName).trim();
     }
 }
 

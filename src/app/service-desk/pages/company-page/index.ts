@@ -23,10 +23,15 @@ export class CompanyPage extends BaseTabPage implements OnInit {
   ngOnInit() {
     this.init();
   }
+  
+  handleUserSelected(data) {
+    console.log('handleUserSelected ' + data);
+    this.router.navigate(['/sd/users', data.id]);
+  }
 
-  handleServiceSelected(data) {
-    console.log('handleServiceSelected ' + data);
-    this.router.navigate([data.id], { relativeTo: this.route });
+  handleUnitSelected(data) {
+    console.log('handleUnitSelected ' + data);
+    this.router.navigate(['/sd/units', data.id]);
   }
 
 }
