@@ -10,7 +10,12 @@ import {Router} from "@angular/router";
 export class MenuAsideComponent implements OnInit {
 //  private current_user: Profile = new Profile();
   private current_url: string;
-  links: Array<any> = [
+  links: Array<any> = [{
+      "title": "Заявки",
+      "icon": "table",
+      "link": ['/sd/tickets'],
+      "access": () => true
+    },
     {
       "title": "Моя компания",
       "icon": "users",

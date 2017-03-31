@@ -1,0 +1,70 @@
+<!-- form start -->
+<form role="form">
+    <div class="box-body">
+ 
+           <div class="form-group">
+                      <div class="form-group">                        
+                         <label for="channel">Канал</label>
+                      </div>
+                      <div class="form-group">
+                              <label for="startDate">Дата подачи заявки</label>
+							  <input type="datetime-local" class="form-control" name="startDate" [(ngModel)]="data.startDate">
+                        </div>
+                     <div class="form-group">
+                            <label for="client">Клиент</label>
+                           <!--   <app-client-select [(client)]="data.client" (change)="onClientChange($event.target.value)"></app-client-select>-->
+                    </div>
+                      <div class="form-group">
+                            <label for="address">Адрес</label>
+                            <!--  <app-address-select [(client)]="data.clientId" [(address)]="data.addressId" (change)="onAddressChange($event.target.value)"></app-address-select>-->
+                        </div>
+                        <div class="form-group">
+                            <label for="user">Заявитель</label>
+                            <!--  <app-user-select [(reference)]="data.clientId" [(value)]="data.applicantId" (change)="onUserChange($event.target.value)"></app-user-select>-->
+                        </div>
+                      <div class="form-group">
+                            <label for="service">Услуга</label>
+                            <!--  <app-user-select [(reference)]="data.clientId" [(value)]="data.applicantId" (change)="onUserChange($event.target.value)"></app-user-select>-->
+                        </div>
+                         <div class="form-group">
+                            <label for="contract">Договор на оказание услуг</label>
+                            <!--  <app-contract-select [(reference)]="data.clientId"  [(value)]="data.contractid" (change)="onContractChange($event.target.value)"></app-contract-select>-->
+                        </div>     
+                       <div class="form-group">
+                            <label for="company">Линия ответственного </label>              
+                        </div>
+                        <div class="form-group">
+                            <label for="operator">Назначенное лицо</label>              
+                        </div>
+                        <div class="form-group">
+                            <label for="priority">Приоритет по заявке</label>
+                          <!--    <app-ticket-priority-select [(priority)]="data.priority" (change)="onPriorityChange($event.target.value)"> </app-ticket-priority-select>-->
+                        </div>                    
+                                        
+          
+                         <div class="form-group">
+                            <label for="operator">Оператор</label>
+                          <!--      <app-user-select [(reference)]="companyId" [(value)]="data.operatorId" (change)="onOperatorChange($event.target.value)"></app-user-select>-->
+                        </div>
+               </div>
+
+                  <!--      <div class="form-group">
+                              <label for="endDate">Дата закрытия заявки</label>
+							  <input type="datetime-local" class="form-control" name="endDate" [(ngModel)]="data.endDate">
+                        </div>  -->
+                        <div class="form-group">
+                            <label for="description">Описание</label>
+                            <textarea class="form-control" rows="3" [(ngModel)]="data.description" name="description" placeholder="Опишите проблему ..." required></textarea>
+                        </div>
+
+                       
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button type="button" class="btn btn-default btn-icon-cancel btn-sm btn-flat" (click)="onClickBack()">Отменить и закрыть</button>
+        <button type="button" class="btn btn-info btn-icon-save btn-sm btn-flat" (click)="onUpdate()">Сохранить</button>
+    </div>
+    <!-- /.box-footer -->
+</form>
+<!-- /.form -->

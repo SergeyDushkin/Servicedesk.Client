@@ -14,6 +14,8 @@ import { SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent
 import { UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, UnitService } from './components/unit'
 import { UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, UserService } from './components/user'
 import { UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, UnitUserService } from './components/unit-user'
+import { TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, TicketService } from './components/ticket'
+
 
 let components = [
     TabBadgeComponent,
@@ -25,6 +27,7 @@ let components = [
     UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, 
     UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, 
     UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, 
+    TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, 
 ];
 
 import { CustomerPage } from './pages/customer-page'
@@ -36,6 +39,7 @@ import { ContractPage } from './pages/contract-page'
 import { ServicePage } from './pages/service-page'
 import { ServicesPage } from './pages/services-page'
 import { CompanyPage } from './pages/company-page'
+import { TicketsPage } from './pages/tickets-page'
 
 let pages = [
   CustomerPage, CustomersPage,
@@ -44,7 +48,8 @@ let pages = [
   UnitPage,
   ContractPage,
   ServicePage, ServicesPage,
-  CompanyPage
+  CompanyPage,
+  TicketsPage
 ];
 
 
@@ -55,7 +60,7 @@ let services = [
   CustomerService,
   AddressService,
   ContractService, ServiceService, SupplierService, UnitService, UserService,
-  UnitUserService,
+  UnitUserService, TicketService,
 ];
 
 @NgModule({
