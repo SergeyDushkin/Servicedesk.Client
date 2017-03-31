@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BaseListComponent } from '../../../shared/components/list.component';
-import { UnitUser } from '../../../models';
-import { UnitUserService } from '../services/service';
+import { User } from '../../../models';
+import { UnitUserReadonlyService } from '../services/service';
 
 @Component({
   selector: 'app-unit-user-list',
   templateUrl: 'index.html'
 })
-export class UnitUserListComponent extends BaseListComponent<UnitUser, UnitUserService> {
+export class UnitUserListComponent extends BaseListComponent<User, UnitUserReadonlyService> {
 
-  constructor(route: ActivatedRoute, service: UnitUserService) { 
+  @Input('unitId') 
+  set unitId(val) {
+    this.filter = { unitId: val };
+  }
+
+  constructor(route: ActivatedRoute, service: UnitUserReadonlyService) { 
     super(route, service);
   }
+
 }

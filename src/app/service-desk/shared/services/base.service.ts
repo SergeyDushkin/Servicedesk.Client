@@ -12,7 +12,7 @@ import { IDataService, IApiClientRequestOptions } from './data.service';
 @Injectable()
 export class BaseService<T extends IIdentifiable> implements IDataService<T> {
 
-  private urlBuilder : UrlBuilder;
+  urlBuilder : UrlBuilder;
 
   constructor(private ctor: ParameterlessConstructor<T>, private api : ApiService, url : string) { 
     this.urlBuilder = new UrlBuilder(url);
@@ -41,8 +41,11 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
   delete = (options: IApiClientRequestOptions) : Observable<Response> =>
     this.api.delete(this.urlBuilder.create(options.reference).addIdentity(options.id).toString());
 
-  //extractData = (item : any) : T => item as T;
   extractData = (ctor: ParameterlessConstructor<T>, item : any) : T => new ctor(item);
+  
+  extractSpecificData<TType extends IIdentifiable>(ctor: ParameterlessConstructor<TType>, item : any) : TType { 
+    return new ctor(item);
+  }
 }
 
 interface ParameterlessConstructor<T> {
