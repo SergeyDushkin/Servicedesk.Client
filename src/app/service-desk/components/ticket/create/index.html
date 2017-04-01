@@ -28,17 +28,16 @@
             </div>
                 <div class="form-group">
                 <label for="contract">Договор на оказание услуг</label>
-                <!--  <app-contract-select [(reference)]="data.clientId"  [(value)]="data.contractid" (change)="onContractChange($event.target.value)"></app-contract-select>-->
             </div>     
             <div class="form-group">
-                <label for="company">Линия ответственного </label>              
+                <label for="company">Линия ответственного</label>              
             </div>
             <div class="form-group">
                 <label for="operator">Назначенное лицо</label>              
             </div>
             <div class="form-group">
                 <label for="priority">Приоритет по заявке</label>
-                <!--    <app-ticket-priority-select [(priority)]="data.priority" (change)="onPriorityChange($event.target.value)"> </app-ticket-priority-select>-->
+                <app-ticket-priority-select [(value)]="data.priorityId" (change)="data.priorityId = $event.target.value"> </app-ticket-priority-select>
             </div>
 
             <div class="form-group">
