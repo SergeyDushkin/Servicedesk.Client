@@ -10,17 +10,20 @@
 <section class="content">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a>Главная</a></li>
+            <li [class.active]="activeTab==item" *ngFor="let item of tabs;"><a (click)="setActiveLink(item)">{{item.title}}<tab-badge [(value)]="item.count"></tab-badge></a></li>
         </ul>
         <div class="tab-content">
-
-            <div class="tab-pane active">
-
-                <app-user-detail [(id)]="id" 
-                    (onLoaded)="handleLoaded($event)" 
-                    (onCanceled)="handleCanceled($event, null)" 
-                    (onUpdated)="handleUpdated($event, null)" 
-                    (onDeleted)="handleDeleted($event, null)"></app-user-detail>
+            
+            <div *ngFor="let item of tabs;" class="tab-pane" [class.active]="activeTab==item">
+                <div [ngSwitch]="item.type">
+                    
+                    <app-user-detail [(id)]="id" 
+                        (onLoaded)="handleLoaded($event)" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)" 
+                        (onDeleted)="handleDeleted($event, item)"
+                        *ngSwitchCase="'app-user-detail'"></app-user-detail>
+                </div>
             </div>
 
         </div>
