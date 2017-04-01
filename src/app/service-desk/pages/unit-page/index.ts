@@ -13,7 +13,7 @@ export class UnitPage extends BaseTabPage implements OnInit {
 
   tabs = [
     { id: 0, type: 'app-unit-detail', title: 'Главная' },
-    { id: 1, type: 'app-unit-user-list', refresh: new Subject<void>(), count: 0, title: 'Сотрудники' },
+    { id: 1, type: 'app-unit-user-list', refresh: new Subject<void>(), removeSelected: new Subject<void>(), count: 0, title: 'Сотрудники' },
   ];
 
   constructor(private route: ActivatedRoute, private location: Location, private router: Router) { 

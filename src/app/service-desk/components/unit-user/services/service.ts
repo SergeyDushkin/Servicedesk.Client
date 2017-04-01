@@ -29,10 +29,10 @@ export class UnitUserService extends BaseService<UnitUser> {
 }
 
 @Injectable()
-export class UnitUserReadonlyService extends BaseService<User> {
+export class UnitUserReadonlyService extends BaseService<UnitUser> {
 
   constructor(private apiService : ApiService) { 
-    super(User, apiService, 'unit-user/users/');
+    super(UnitUser, apiService, 'unit-user/users/');
   }
   
 }

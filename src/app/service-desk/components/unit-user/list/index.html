@@ -3,14 +3,16 @@
   <div class="box-body no-padding">
     <table class="table table-striped">
       <tr>
+        <th width="20px"></th>
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
       </tr>
-      <tr (click)="selectRow(item)" *ngFor="let item of data; trackBy: trackById">
-        <td>{{item.lastName}}</td>
-        <td>{{item.firstName}}</td>
-        <td>{{item.middleName}}</td>
+      <tr *ngFor="let item of data; trackBy: trackById">
+        <td><input type="checkbox" #chek (change)="item['selected'] = chek.checked"></td>
+        <td>{{item.user.lastName}}</td>
+        <td>{{item.user.firstName}}</td>
+        <td>{{item.user.middleName}}</td>
       </tr>
     </table>
   </div>

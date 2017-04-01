@@ -35,11 +35,13 @@ export class UnitUser implements IIdentifiable {
     public id : string;
     public unitId : string;
     public userId : string;
+    public user: User;
 
     public constructor(data:any = {}) {
         this.id = data.id || undefined;
         this.unitId = data.unitId || undefined;
         this.userId = data.userId || undefined;
+        this.user = new User(data.user) || undefined;
     }
 }
 
