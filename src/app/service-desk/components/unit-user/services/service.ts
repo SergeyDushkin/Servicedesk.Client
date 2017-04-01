@@ -27,12 +27,3 @@ export class UnitUserService extends BaseService<UnitUser> {
         return new PageResult(data, Number.parseInt(count));
       });
 }
-
-@Injectable()
-export class UnitUserReadonlyService extends BaseService<UnitUser> {
-
-  constructor(private apiService : ApiService) { 
-    super(UnitUser, apiService, 'unit-user/users/');
-  }
-  
-}
