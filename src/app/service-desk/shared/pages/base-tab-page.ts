@@ -38,8 +38,8 @@ export class BaseTabPage {
     //this.refresh[type].next();
   }
 
-  onCreateTab(type, title) {
-    this.createTab({ id: type, title: title, type: type });
+  onCreateTab(type, title, id = undefined) {
+    this.createTab({ id: id || type, title: title, type: type });
   }
 
   removeTab(tab) {

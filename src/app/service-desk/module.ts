@@ -17,6 +17,7 @@ import { UnitUserCreateComponent, UnitUserListComponent, UnitUserSelectComponent
 import { UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, UnitServiceService } from './components/unit-service'
 import { ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, ContractServiceService } from './components/contract-service'
 import { TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, TicketService } from './components/ticket'
+import { TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, TicketPriorityService } from './components/ticket-priority'
 
 let components = [
     TabBadgeComponent,
@@ -31,6 +32,7 @@ let components = [
     UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, 
     ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, 
     TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, 
+    TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, 
 ];
 
 import { CustomerPage } from './pages/customer-page'
@@ -43,6 +45,7 @@ import { ServicePage } from './pages/service-page'
 import { ServicesPage } from './pages/services-page'
 import { CompanyPage } from './pages/company-page'
 import { TicketsPage } from './pages/tickets-page'
+import { TicketPriorityPage } from './pages/ticket-priority-page'
 
 let pages = [
   CustomerPage, CustomersPage,
@@ -52,7 +55,8 @@ let pages = [
   ContractPage,
   ServicePage, ServicesPage,
   CompanyPage,
-  TicketsPage
+  TicketsPage, 
+  TicketPriorityPage
 ];
 
 
@@ -64,6 +68,7 @@ let services = [
   AddressService,
   ContractService, ServiceService, SupplierService, UnitService, UserService,
   UnitUserService, UnitServiceService, ContractServiceService, TicketService,
+  TicketPriorityService,
 ];
 
 @NgModule({

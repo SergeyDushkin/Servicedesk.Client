@@ -174,6 +174,16 @@ export class Contract implements IIdentifiable, IDependently {
     }
 }
 
+export class TicketPriority implements IIdentifiable {
+
+    public id : string;
+    public name : string;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+    }
+}
 
 export class Ticket implements IIdentifiable, IDependently {
 
