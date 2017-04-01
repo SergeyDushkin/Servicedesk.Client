@@ -15,6 +15,9 @@ export class BaseSelectComponent<T extends IIdentifiable, TService extends IData
   private _value: string;
   private _source: T[] = new Array<T>();
   private _disabled: boolean = false;
+  
+  private _referenceId : string = undefined;
+  private _filter : any = undefined;
 
   @Output() valueChange = new EventEmitter();
   @Output() onIWhantInfo = new EventEmitter();
@@ -57,6 +60,32 @@ export class BaseSelectComponent<T extends IIdentifiable, TService extends IData
     this._count = val;
     this.countChange.emit(this._count);
   }
+  
+  @Input('referenceId') 
+  set referenceId (val) {
+    this._referenceId = val;
+
+    if (this.isInitialized) {
+      this.refresh();
+    }
+  }
+
+  get referenceId() {
+    return this._referenceId;
+  }
+  
+  @Input('filter') 
+  set filter (val) {
+    this._filter = val;
+
+    if (this.isInitialized) {
+      this.refresh();
+    }
+  }
+
+  get filter() {
+    return this._filter;
+  }
 
   constructor(private route: ActivatedRoute, private service: TService) { }
 
@@ -66,8 +95,20 @@ export class BaseSelectComponent<T extends IIdentifiable, TService extends IData
   }
 
   refresh() {
+    
+    if (this.referenceId) {
+      if (this.filter) {
+        if (!this.filter.referenceId) {
+          this.filter.referenceId = this.referenceId;
+        }
+      } else {
+        this.filter = { referenceId: this.referenceId };
+      }
+    }
+
     this.isLoading = true;
-    return this.service.get().toPromise()
+
+    return this.service.get({ reference: this.referenceId, params: this.filter }).toPromise()
       .then(r => {
         this.source = r.data;
         this.count = r.totalCount;
