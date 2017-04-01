@@ -13,7 +13,6 @@
             <li [class.active]="activeTab==customerDetailTab"><a (click)="activeTab=customerDetailTab">Главная</a></li>
             <li [class.active]="activeTab==addressListTab"><a (click)="activeTab=addressListTab">Адреса<tab-badge [(value)]="count['app-address-list']"></tab-badge></a></li>
             <li [class.active]="activeTab==userListTab"><a (click)="activeTab=userListTab">Сотрудники<tab-badge [(value)]="count['app-user-list']"></tab-badge></a></li>
-            <li [class.active]="activeTab==unitListTab"><a (click)="activeTab=unitListTab">Орг. структура<tab-badge [(value)]="count['app-unit-list']"></tab-badge></a></li>
             <li [class.active]="activeTab==contractListTab"><a (click)="activeTab=contractListTab">Контракты<tab-badge [(value)]="count['app-contract-list']"></tab-badge></a></li>
 
             <li [class.active]="activeTab==item.id" class="warning" *ngFor="let item of links;"><a (click)="setActiveLink(item)">{{item.name}}</a></li>
@@ -66,19 +65,6 @@
                     [(onRefresh)]="refresh['app-contract-list']" 
                     [(count)]="count['app-contract-list']"
                     (onSelect)="handleContractSelected($event)"></app-contract-list>
-            </div>
-
-            <div class="tab-pane" [class.active]="activeTab==unitListTab">
-
-                <div class="box-header">
-                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="refresh['app-unit-list'].next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
-                    <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-create', 'Новое подразделение')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
-                </div>
-
-                <app-unit-list [(referenceId)]="id" 
-                    [(onRefresh)]="refresh['app-unit-list']" 
-                    [(count)]="count['app-unit-list']"
-                    (onSelect)="handleUnitSelected($event)"></app-unit-list>
             </div>
             
             <div *ngFor="let item of links;" class="tab-pane" [class.active]="activeTab==item.id">

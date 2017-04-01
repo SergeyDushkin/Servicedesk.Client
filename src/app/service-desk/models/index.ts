@@ -60,6 +60,21 @@ export class UnitService implements IIdentifiable {
     }
 }
 
+export class ContractService implements IIdentifiable {
+
+    public id : string;
+    public contractId : string;
+    public serviceId : string;
+    public service: Service;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.contractId = data.contractId || undefined;
+        this.serviceId = data.userId || undefined;
+        this.service = new Service(data.service) || undefined;
+    }
+}
+
 export class Supplier implements IIdentifiable, IDependently {
 
     public resource : string;
