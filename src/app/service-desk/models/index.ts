@@ -35,11 +35,43 @@ export class UnitUser implements IIdentifiable {
     public id : string;
     public unitId : string;
     public userId : string;
+    public user: User;
 
     public constructor(data:any = {}) {
         this.id = data.id || undefined;
         this.unitId = data.unitId || undefined;
         this.userId = data.userId || undefined;
+        this.user = new User(data.user) || undefined;
+    }
+}
+
+export class UnitService implements IIdentifiable {
+
+    public id : string;
+    public unitId : string;
+    public serviceId : string;
+    public service: Service;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.unitId = data.unitId || undefined;
+        this.serviceId = data.userId || undefined;
+        this.service = new Service(data.service) || undefined;
+    }
+}
+
+export class ContractService implements IIdentifiable {
+
+    public id : string;
+    public contractId : string;
+    public serviceId : string;
+    public service: Service;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.contractId = data.contractId || undefined;
+        this.serviceId = data.userId || undefined;
+        this.service = new Service(data.service) || undefined;
     }
 }
 

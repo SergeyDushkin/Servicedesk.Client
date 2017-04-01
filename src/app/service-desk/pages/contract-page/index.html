@@ -10,17 +10,41 @@
 <section class="content">
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-            <li class="active"><a>Главная</a></li>
+            <li [class.active]="activeTab==item" *ngFor="let item of tabs;"><a (click)="setActiveLink(item)">{{item.title}}<tab-badge [(value)]="item.count"></tab-badge></a></li>
         </ul>
         <div class="tab-content">
+            
+            <div *ngFor="let item of tabs;" class="tab-pane" [class.active]="activeTab==item">
+                <div [ngSwitch]="item.type">
+                    
+                    <div *ngSwitchCase="'app-contract-service-list'">
+                        <div class="box-header">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info btn-sm btn-flat" (click)="item.removeSelected.next()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-contract-service-create', 'Добавить услугу')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                            </div>
+                        </div>
+                        <app-contract-service-list
+                            [(contractId)]="id" 
+                            [(onRefresh)]="item.refresh" 
+                            [(onRemoveSelected)]="item.removeSelected" 
+                            [(count)]="item.count"></app-contract-service-list>
+                    </div>
 
-            <div class="tab-pane active">
+                    <app-contract-detail [(id)]="id" 
+                        (onLoaded)="handleLoaded($event)" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)" 
+                        (onDeleted)="handleDeleted($event, item)"
+                        *ngSwitchCase="'app-contract-detail'"></app-contract-detail>
 
-                <app-contract-detail [(id)]="id" 
-                    (onLoaded)="handleLoaded($event)" 
-                    (onCanceled)="handleCanceled($event, null)" 
-                    (onUpdated)="handleUpdated($event, null)" 
-                    (onDeleted)="handleDeleted($event, null)"></app-contract-detail>
+                    <app-contract-service-create
+                        [(contractId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)"
+                        *ngSwitchCase="'app-contract-service-create'"></app-contract-service-create>
+                </div>
             </div>
 
         </div>

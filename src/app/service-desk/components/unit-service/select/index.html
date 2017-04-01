@@ -1,0 +1,9 @@
+<div class="input-group">
+  <select class="form-control" [disabled]="disabled" [(ngModel)]="value">
+    <option *ngFor="let item of source; trackBy: trackById" [value]="item.id">{{item.name}}</option>
+  </select>
+  <span class="input-group-btn">
+    <a *ngIf="value" class="btn btn-flat" routerLink="/knipi/{{value}}"><i class="fa fa-sliders"></i></a>
+    <a class="btn btn-flat" routerLink="/knipi/create"><i class="fa fa-plus-circle"></i></a>
+  </span>
+</div>

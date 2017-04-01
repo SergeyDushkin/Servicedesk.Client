@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map'
@@ -25,6 +25,7 @@ export class BaseListComponent<T extends IIdentifiable, TService extends IDataSe
   
   @Input('count') _count : number = 0;
   @Input('onRefresh') onRefresh = new Subject<void>();
+  @Input('onRemoveSelected') onRemoveSelected = new Subject<void>();
   
   @Input('referenceId') 
   set referenceId (val) {
@@ -70,6 +71,10 @@ export class BaseListComponent<T extends IIdentifiable, TService extends IDataSe
     if (this.onRefresh) {
       this.onRefresh.subscribe(() => this.refresh());
     }
+
+    if (this.onRemoveSelected) {
+      this.onRemoveSelected.subscribe(() => this.removeSelected());
+    }
   }
   
   trackById(index, item) {
@@ -111,6 +116,20 @@ export class BaseListComponent<T extends IIdentifiable, TService extends IDataSe
         this.count = r.totalCount;
         this.isLoading = false;
       });
+  }
+
+  removeSelected() {
+    
+    let tasks = this.data
+      .filter(r => r['selected'] == true)
+      .map(r => this.service.delete({ id: r.id }));
+    
+    if (tasks.length == 0) return;
+
+    Observable.forkJoin(tasks).subscribe(response => {
+      this.service.constructor.name + ': record was deleted';
+      this.refresh();
+    });
   }
 
 }

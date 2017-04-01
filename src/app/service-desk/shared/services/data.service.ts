@@ -23,5 +23,6 @@ export interface IApiClientRequestOptions {
   reference?: string,
   params?: any,
   page?: number,
-  results?: number
+  results?: number,
+  include?: string
 }

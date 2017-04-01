@@ -19,13 +19,34 @@
                     
                     <div *ngSwitchCase="'app-unit-user-list'">
                         <div class="box-header">
-                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
-                            <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-user-create', 'Включить сотрудника')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info btn-sm btn-flat" (click)="item.removeSelected.next()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-user-create', 'Включить сотрудника')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                            </div>
                         </div>
                         <app-unit-user-list
+                            [(unitId)]="id" 
                             [(onRefresh)]="item.refresh" 
+                            [(onRemoveSelected)]="item.removeSelected" 
                             [(count)]="item.count"
                             (onSelect)="handleUnitUserSelected($event)"></app-unit-user-list>
+                    </div>
+
+                    <div *ngSwitchCase="'app-unit-service-list'">
+                        <div class="box-header">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-info btn-sm btn-flat" (click)="item.removeSelected.next()"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="item.refresh.next()"><i class="fa fa-refresh" aria-hidden="true"></i> Обновить</button>
+                                <button type="button" class="btn btn-info btn-icon-add btn-sm btn-flat" (click)="onCreateTab('app-unit-service-create', 'Добавить услугу')"><i class="fa fa-plus" aria-hidden="true"></i> Добавить</button>
+                            </div>
+                        </div>
+                        <app-unit-service-list
+                            [(unitId)]="id" 
+                            [(onRefresh)]="item.refresh" 
+                            [(onRemoveSelected)]="item.removeSelected" 
+                            [(count)]="item.count"
+                            (onSelect)="handleUnitServiceSelected($event)"></app-unit-service-list>
                     </div>
 
                     <app-unit-detail [(id)]="id" 
@@ -40,6 +61,12 @@
                         (onCanceled)="handleCanceled($event, item)" 
                         (onUpdated)="handleUpdated($event, item)"
                         *ngSwitchCase="'app-unit-user-create'"></app-unit-user-create>
+
+                    <app-unit-service-create
+                        [(unitId)]="id" 
+                        (onCanceled)="handleCanceled($event, item)" 
+                        (onUpdated)="handleUpdated($event, item)"
+                        *ngSwitchCase="'app-unit-service-create'"></app-unit-service-create>
                 </div>
             </div>
 

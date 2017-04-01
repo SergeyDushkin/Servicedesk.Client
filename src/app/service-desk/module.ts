@@ -13,9 +13,10 @@ import { ServiceCreateComponent, ServiceDetailComponent, ServiceListComponent, S
 import { SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, SupplierService } from './components/supplier'
 import { UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, UnitService } from './components/unit'
 import { UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, UserService } from './components/user'
-import { UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, UnitUserService } from './components/unit-user'
+import { UnitUserCreateComponent, UnitUserListComponent, UnitUserSelectComponent, UnitUserService } from './components/unit-user'
+import { UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, UnitServiceService } from './components/unit-service'
+import { ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, ContractServiceService } from './components/contract-service'
 import { TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, TicketService } from './components/ticket'
-
 
 let components = [
     TabBadgeComponent,
@@ -26,7 +27,9 @@ let components = [
     SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent, SupplierSelectComponent, 
     UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, 
     UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, 
-    UnitUserCreateComponent, UnitUserDetailComponent, UnitUserListComponent, UnitUserSelectComponent, 
+    UnitUserCreateComponent, UnitUserListComponent, UnitUserSelectComponent, 
+    UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, 
+    ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, 
     TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, 
 ];
 
@@ -60,7 +63,7 @@ let services = [
   CustomerService,
   AddressService,
   ContractService, ServiceService, SupplierService, UnitService, UserService,
-  UnitUserService, TicketService,
+  UnitUserService, UnitServiceService, ContractServiceService, TicketService,
 ];
 
 @NgModule({
