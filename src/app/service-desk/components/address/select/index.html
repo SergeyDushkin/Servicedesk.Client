@@ -1,5 +1,6 @@
 <div class="input-group">
   <select class="form-control input-sm" [disabled]="disabled" [(ngModel)]="value">
+    <option disabled selected value> -- выберите значение -- </option>
     <option *ngFor="let item of source; trackBy: trackById" [value]="item.id">{{item.name}}</option>
   </select>
   <span class="input-group-btn">

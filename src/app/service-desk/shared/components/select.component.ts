@@ -107,12 +107,14 @@ export class BaseSelectComponent<T extends IIdentifiable, TService extends IData
     }
 
     this.isLoading = true;
+    this.disabled = true;
 
     return this.service.get({ reference: this.referenceId, params: this.filter }).toPromise()
       .then(r => {
         this.source = r.data;
         this.count = r.totalCount;
         this.isLoading = false;
+        this.disabled = false;
       });
   }
 
