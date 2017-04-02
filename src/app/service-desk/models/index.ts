@@ -185,6 +185,19 @@ export class TicketPriority implements IIdentifiable {
     }
 }
 
+export class Channel implements IIdentifiable {
+
+    public id : string;
+    public name : string;
+    public code : string;
+
+    public constructor(data:any = {}) {
+        this.id = data.id || undefined;
+        this.name = data.name || "";
+        this.code = data.code || "";
+    }
+}
+
 export class Ticket implements IIdentifiable, IDependently {
 
     public resource : string;
@@ -205,6 +218,7 @@ export class Ticket implements IIdentifiable, IDependently {
     public businessUnitId: string;
     public userId: string;
     public applicantId : string;
+    public channelId : string;
     
     //public client: Client;
     public address: Address;
@@ -236,6 +250,7 @@ export class Ticket implements IIdentifiable, IDependently {
         this.businessUnitId = data.businessUnitId || undefined;
         this.userId = data.userId || "";
         this.applicantId = data.applicantId || undefined;
+        this.channelId = data.channelId || undefined;
         
         //this.client = data.client ? new Client(data.client) : new Client();
         this.address = data.address ? new Address(data.address) : new Address();

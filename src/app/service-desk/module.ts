@@ -18,6 +18,7 @@ import { UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelect
 import { ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, ContractServiceService } from './components/contract-service'
 import { TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, TicketService } from './components/ticket'
 import { TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, TicketPriorityService } from './components/ticket-priority'
+import { ChannelSelectComponent, ChannelService } from './components/channel'
 
 let components = [
     TabBadgeComponent,
@@ -33,6 +34,7 @@ let components = [
     ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, 
     TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, 
     TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, 
+    ChannelSelectComponent,
 ];
 
 import { CustomerPage } from './pages/customer-page'
@@ -68,7 +70,7 @@ let services = [
   AddressService,
   ContractService, ServiceService, SupplierService, UnitService, UserService,
   UnitUserService, UnitServiceService, ContractServiceService, TicketService,
-  TicketPriorityService,
+  TicketPriorityService, ChannelService
 ];
 
 @NgModule({
