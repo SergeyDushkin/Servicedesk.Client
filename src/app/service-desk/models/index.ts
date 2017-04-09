@@ -51,12 +51,14 @@ export class UnitService implements IIdentifiable {
     public unitId : string;
     public serviceId : string;
     public service: Service;
+    public unit: Unit;
 
     public constructor(data:any = {}) {
         this.id = data.id || undefined;
         this.unitId = data.unitId || undefined;
-        this.serviceId = data.userId || undefined;
+        this.serviceId = data.serviceId || undefined;
         this.service = new Service(data.service) || undefined;
+        this.unit = new Unit(data.unit) || undefined;
     }
 }
 

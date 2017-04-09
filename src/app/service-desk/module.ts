@@ -14,7 +14,7 @@ import { SupplierCreateComponent, SupplierDetailComponent, SupplierListComponent
 import { UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, UnitService } from './components/unit'
 import { UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, UserService } from './components/user'
 import { UnitUserCreateComponent, UnitUserListComponent, UnitUserSelectComponent, UnitUserService } from './components/unit-user'
-import { UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, UnitServiceService } from './components/unit-service'
+import { UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, UnitServiceLabelComponent, UnitServiceService } from './components/unit-service'
 import { ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, ContractServiceService } from './components/contract-service'
 import { TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, TicketService } from './components/ticket'
 import { TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, TicketPriorityService } from './components/ticket-priority'
@@ -30,7 +30,7 @@ let components = [
     UnitCreateComponent, UnitDetailComponent, UnitListComponent, UnitSelectComponent, 
     UserCreateComponent, UserDetailComponent, UserListComponent, UserSelectComponent, 
     UnitUserCreateComponent, UnitUserListComponent, UnitUserSelectComponent, 
-    UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, 
+    UnitServiceCreateComponent, UnitServiceListComponent, UnitServiceSelectComponent, UnitServiceLabelComponent,
     ContractServiceCreateComponent, ContractServiceListComponent, ContractServiceSelectComponent, 
     TicketCreateComponent, TicketDetailComponent, TicketListComponent, TicketSelectComponent, 
     TicketPriorityCreateComponent, TicketPriorityDetailComponent, TicketPriorityListComponent, TicketPrioritySelectComponent, 

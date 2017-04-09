@@ -25,13 +25,14 @@
             </div>
             <div class="form-group">
                 <label for="service">Услуга</label>
-                <app-service-select [(value)]="data.serviceId" (change)="data.serviceId = $event.target.value"></app-service-select>
+                <app-service-select [(value)]="data.serviceId" (change)="handleServiceSelected($event.target.value)"></app-service-select>
             </div>
                 <div class="form-group">
                 <label for="contract">Договор на оказание услуг</label>
             </div>     
             <div class="form-group">
-                <label for="company">Линия ответственного</label>              
+                <label for="company">Линия ответственного</label> 
+                <app-unit-service-label [(serviceId)]="data.serviceId"></app-unit-service-label>             
             </div>
             <div class="form-group">
                 <label for="operator">Назначенное лицо</label>              

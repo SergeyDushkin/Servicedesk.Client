@@ -14,7 +14,7 @@ export class BaseService<T extends IIdentifiable> implements IDataService<T> {
 
   urlBuilder : UrlBuilder;
 
-  constructor(private ctor: ParameterlessConstructor<T>, private api : ApiService, url : string) { 
+  constructor(protected ctor: ParameterlessConstructor<T>, protected api : ApiService, url : string) { 
     this.urlBuilder = new UrlBuilder(url);
   }
 
