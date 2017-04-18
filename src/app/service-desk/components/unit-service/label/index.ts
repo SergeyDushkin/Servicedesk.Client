@@ -10,7 +10,7 @@ import { UnitServiceService } from '../services/service';
 })
 export class UnitServiceLabelComponent {
 
-  private data: UnitService = ({} as UnitService);
+  data: UnitService = ({} as UnitService);
 
   @Input('serviceId') 
   set serviceId (val) {

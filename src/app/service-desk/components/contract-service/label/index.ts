@@ -10,21 +10,19 @@ import { ContractServiceService } from '../services/service';
 })
 export class ContractServiceLabelComponent {
 
-  private data = new BehaviorSubject<ContractService>({} as ContractService);
+  data: ContractService = ({} as ContractService);
 
   @Input('serviceId') 
   set serviceId (val) {
-    //this.refresh(val);
+    this.refresh(val);
   }
 
   constructor(private service: ContractServiceService) { 
   }
 
-  //refresh(value) {
-  //  this.service.getById({ serviceId: value })
-  //    .subscribe(r => {
-  //      this.data.next(r);
-  //    });
-  //}
+  refresh(value) {
+    if (!value) return;
+    this.service.getContract(value).subscribe(r => this.data = r, r => this.data = {} as ContractService);
+  }
 
 }
